@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { severity: "success", msg: "successful", isOpen: "true" };
+const initialState = { severity: "success", msg: "successful", isOpen: false };
 
 export const snackBar = createSlice({
   name: "variants",
@@ -12,8 +12,8 @@ export const snackBar = createSlice({
       state.isOpen = true;
     },
     succeed: (state) => {
-      state.variants.severity = "success";
-      state.variants.msg = "successful";
+      state.severity = "success";
+      state.msg = "successful";
       state.isOpen = true;
     },
     close: (state) => {

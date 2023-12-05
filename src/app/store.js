@@ -9,7 +9,7 @@ export const store = configureStore({
     modal: modalReducer,
     tasks: pendingTasksReducer,
     taskInput: taskInputReducer,
-    variant: snackBarReducer,
+    variants: snackBarReducer,
     // will contain list of reducers
   },
 });

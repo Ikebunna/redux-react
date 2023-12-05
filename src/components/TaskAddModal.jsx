@@ -9,14 +9,11 @@ import { closeModal } from "../features/modalSlice";
 import InputField from "./InputField";
 import { addTask } from "../features/pendingTaskSlice";
 import CustomizedSnackbars from "./SnackBar";
+import { fail, succeed } from "../features/snackBarSlice";
 
 const TaskModal = () => {
-  const [openSnack, setOpenSnack] = useState(false);
-  const [variant, setVariant] = useState({
-    color: "success",
-    msg: "Task Added",
-  });
   const dispatch = useDispatch();
+
   const { taskAddModalIsOpen } = useSelector((state) => state.modal);
   const handleClose = () => dispatch(closeModal());
 
@@ -27,14 +24,9 @@ const TaskModal = () => {
   const handleSubmit = () => {
     if (value.trim()) {
       dispatch(addTask(value.trim()));
-      setVariant({
-        color: "success",
-        msg: "Task Added",
-      });
-      setOpenSnack(true);
+      dispatch(succeed());
     } else {
-      setVariant({ color: "error", msg: "Failed" });
-      setOpenSnack(true);
+      dispatch(fail());
     }
     setValue("");
   };
@@ -54,12 +46,6 @@ const TaskModal = () => {
           </Button>
         </DialogActions>
       </Dialog>
-      <CustomizedSnackbars
-        setOpenSnack={setOpenSnack}
-        openSnack={openSnack}
-        variant={variant.color}
-        msg={variant.msg}
-      />
     </div>
   );
 };
