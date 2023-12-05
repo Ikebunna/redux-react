@@ -2,15 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "@mui/material";
-import TaskModal from "./TaskModal";
 import { useDispatch } from "react-redux";
-import { openModal } from "../features/modal/modalSlice";
+import { openTaskAddModal } from "../features/modalSlice";
 
 const AddTask = () => {
   const dispatch = useDispatch();
-  const handleClickOpen = () => dispatch(openModal());
-
-  // setOpen(true);
+  const handleClickOpen = () => {
+    dispatch(openTaskAddModal());
+  };
 
   return (
     <div className="bottom-0 sticky w-full bg-pink-300 text-center">
@@ -23,7 +22,6 @@ const AddTask = () => {
         <FontAwesomeIcon icon={faPlus} size="3x" />
         <span>Add New Task</span>
       </Button>
-      <TaskModal title={"Add New Task"} id={1} />
     </div>
   );
 };
