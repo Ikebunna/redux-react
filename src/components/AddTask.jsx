@@ -7,19 +7,22 @@ import { openTaskAddModal } from "../features/modalSlice";
 
 const AddTask = () => {
   const dispatch = useDispatch();
+
+  // handlClick open functin sets modal display to true
   const handleClickOpen = () => {
     dispatch(openTaskAddModal());
   };
 
   return (
-    <div className="bottom-0 sticky w-full bg-pink-300 text-center">
+    <div className="bottom-0 sticky text-center">
       <Button
-        fullWidth
-        className="space-x-8"
+        // fullWidth
+        className="space-x-4"
         variant="contained"
         onClick={handleClickOpen}
+        color="myPink"
       >
-        <FontAwesomeIcon icon={faPlus} size="3x" />
+        <FontAwesomeIcon icon={faPlus} size="2x" />
         <span>Add New Task</span>
       </Button>
     </div>

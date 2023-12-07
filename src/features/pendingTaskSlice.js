@@ -1,26 +1,17 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+// import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+// const initialState = filteredTasks;
 
-export const pendingTasks = createSlice({
-  name: "tasks",
-  initialState,
-  reducers: {
-    addTask: (state, action) => [
-      { id: nanoid(), description: action.payload, isDone: false },
-      ...state,
-    ],
+// export const Tasks = createSlice({
+//   name: "filteredTasks",
+//   initialState,
+//   reducers: {
+//     filterCompleted: (state, action) => {
+//       return (state = state.filter((item) => item.id === action.payload));
+//     },
+//   },
+// });
 
-    updateTaskStatus: (state, action) => {
-      state = state.map((item) => {
-        if (item.id === action.payload) {
-          item.isDone = !item.isDone;
-        }
-      });
-    },
-  },
-});
-
-// exports needed by store
-export const { addTask, updateTaskStatus } = pendingTasks.actions;
-export default pendingTasks.reducer;
+// // exports needed by store
+// export const { filterCompleted } = filteredTasks.actions;
+// export default filteredTasks.reducer;

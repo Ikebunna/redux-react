@@ -7,20 +7,21 @@ import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../features/modalSlice";
 import InputField from "./InputField";
-import { addTask } from "../features/pendingTaskSlice";
-import CustomizedSnackbars from "./SnackBar";
+import { addTask } from "../features/TaskSlice";
 import { fail, succeed } from "../features/snackBarSlice";
 
 const TaskModal = () => {
   const dispatch = useDispatch();
 
+  // get global state of add task modal
   const { taskAddModalIsOpen } = useSelector((state) => state.modal);
   const handleClose = () => dispatch(closeModal());
 
+  // update value of input field
   const [value, setValue] = useState("");
   const handleInput = (e) => setValue(e.target.value);
 
-  // dispatch from user input
+  // update state from user input
   const handleSubmit = () => {
     if (value.trim()) {
       dispatch(addTask(value.trim()));
@@ -33,7 +34,15 @@ const TaskModal = () => {
 
   return (
     <div>
-      <Dialog open={taskAddModalIsOpen} onClose={handleClose} fullWidth>
+      <Dialog
+        open={taskAddModalIsOpen}
+        onClose={handleClose}
+        onKeyUp={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            handleSubmit();
+          }
+        }}
+      >
         <DialogTitle>Add Task</DialogTitle>
         <DialogContent>
           <InputField type="text" handleInput={handleInput} value={value} />

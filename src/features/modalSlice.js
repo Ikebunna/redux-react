@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   taskDisplayModalIsOpen: false,
   taskAddModalIsOpen: false,
+  displayID: "",
 };
 
 export const modalSlice = createSlice({
@@ -13,8 +14,9 @@ export const modalSlice = createSlice({
       state.taskDisplayModalIsOpen = false;
       state.taskAddModalIsOpen = false;
     },
-    openTaskDisplayModal: (state) => {
+    openTaskDisplayModal: (state, action) => {
       state.taskDisplayModalIsOpen = true;
+      state.displayID = action.payload;
     },
     openTaskAddModal: (state) => {
       state.taskAddModalIsOpen = true;

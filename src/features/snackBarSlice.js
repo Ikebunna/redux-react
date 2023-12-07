@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { severity: "success", msg: "successful", isOpen: false };
+const initialState = {
+  isOpen: false,
+};
 
 export const snackBar = createSlice({
   name: "variants",
@@ -8,12 +10,12 @@ export const snackBar = createSlice({
   reducers: {
     fail: (state) => {
       state.severity = "error";
-      state.msg = "unsuccessful";
+      state.msg = "Task Cannot be Empty";
       state.isOpen = true;
     },
     succeed: (state) => {
       state.severity = "success";
-      state.msg = "successful";
+      state.msg = "Tasks Updated";
       state.isOpen = true;
     },
     close: (state) => {
